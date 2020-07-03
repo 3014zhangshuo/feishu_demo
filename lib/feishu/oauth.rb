@@ -31,19 +31,22 @@ module Feishu
     end
 
     def app_access_token
-      @app_access_token ||= JSON.parse(raw_app_access_token)["app_access_token"]
+      raw_app_access_token["app_access_token"]
     end
 
     def raw_app_access_token
       @raw_app_access_token ||= begin
-        post(
-          APP_ACCESS_TOKEN_URL,
-          payload: {
-            app_id: APP_ID,
-            app_secret: APP_SECRET
-          }.to_json,
-          headers: { content_type: :json, accept: :json }
-        )
+        result =
+          post(
+            APP_ACCESS_TOKEN_URL,
+            payload: {
+              app_id: APP_ID,
+              app_secret: APP_SECRET
+            }.to_json,
+            headers: { content_type: :json, accept: :json }
+          )
+
+        JSON.parse(result)
       end
     end
 
