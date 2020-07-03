@@ -5,7 +5,7 @@ module Feishu
     before_action :set_oauth
 
     def show
-      render json: @oauth.user_info
+      render json: { openid: @oauth.openid, **@oauth.user_info }
     end
 
     private
