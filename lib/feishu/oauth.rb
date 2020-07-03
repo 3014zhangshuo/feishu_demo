@@ -18,12 +18,16 @@ module Feishu
       @code = code
     end
 
+    def info
+      user_info.merge(openid: openid)
+    end
+
     def openid
-      @openid ||= JSON.parse(raw_access_token)["data"]["open_id"]
+      raw_access_token["open_id"]
     end
 
     def user_access_token
-      @user_access_token ||= JSON.parse(raw_access_token)["data"]["access_token"]
+      raw_access_token["access_token"]
     end
 
     def app_access_token
@@ -45,15 +49,18 @@ module Feishu
 
     def raw_access_token
       @raw_access_token ||= begin
-        post(
-          ACCESS_TOKEN_URL,
-          payload: {
-            app_access_token: app_access_token,
-            grant_type: "authorization_code",
-            code: code
-          }.to_json,
-          headers: { content_type: :json, accept: :json }
-        )
+        result =
+          post(
+            ACCESS_TOKEN_URL,
+            payload: {
+              app_access_token: app_access_token,
+              grant_type: "authorization_code",
+              code: code
+            }.to_json,
+            headers: { content_type: :json, accept: :json }
+          )
+
+        JSON.parse(result)['data']
       end
     end
 
