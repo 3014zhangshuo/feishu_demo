@@ -43,7 +43,7 @@ module Feishu
         r_params = {
           user_access_token: user_access_token
         }
-        RestClient.post "https://open.feishu.cn/open-apis/authen/v1/user_info", r_params.to_json, {content_type: :json, accept: :json}
+        RestClient.get "https://open.feishu.cn/open-apis/authen/v1/user_info", r_params.to_json, {content_type: :json, accept: :json}
       end
     end
   end
