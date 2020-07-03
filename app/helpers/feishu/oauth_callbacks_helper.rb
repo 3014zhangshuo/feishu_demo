@@ -1,0 +1,2 @@
+module Feishu::OauthCallbacksHelper
+end
