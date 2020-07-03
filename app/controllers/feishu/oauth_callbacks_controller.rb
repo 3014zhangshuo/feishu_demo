@@ -35,7 +35,7 @@ module Feishu
     end
 
     def user_access_token
-      JSON.parse(@get_access_token)["data"]["access_token"]
+      JSON.parse(get_access_token)["data"]["access_token"]
     end
 
     def get_user_info
