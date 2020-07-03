@@ -44,18 +44,15 @@ module Feishu
 
     def raw_access_token
       @raw_access_token ||= begin
-        result =
-          post(
-            ACCESS_TOKEN_URL,
-            payload: {
-              app_access_token: app_access_token,
-              grant_type: "authorization_code",
-              code: code
-            }.to_json,
-            headers: { content_type: :json, accept: :json }
-          )
-        Rails.logger.debug "result----#{result}"
-        JSON.parse(result)["data"]
+        post(
+          ACCESS_TOKEN_URL,
+          payload: {
+            app_access_token: app_access_token,
+            grant_type: "authorization_code",
+            code: code
+          }.to_json,
+          headers: { content_type: :json, accept: :json }
+        ).fetch("data")
       end
     end
 
