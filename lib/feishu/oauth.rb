@@ -2,6 +2,7 @@
 
 # https://open.feishu.cn/document/ukTMukTMukTM/uADN14CM0UjLwQTN
 # https://open.feishu.cn/document/ukTMukTMukTM/uETOwYjLxkDM24SM5AjN
+# https://github.com/rest-client/rest-client/issues/397
 module Feishu
   class Oauth
     APP_ID = "cli_9e7688822c74500c"
@@ -18,15 +19,15 @@ module Feishu
     end
 
     def openid
-      @open_id ||= JSON.parse(raw_access_token)["open_id"]
+      raw_access_token["open_id"]
+    end
+
+    def user_access_token
+      raw_access_token["access_token"]
     end
 
     def app_access_token
       @app_access_token ||= JSON.parse(raw_app_access_token)["app_access_token"]
-    end
-
-    def user_access_token
-      @access_token ||= JSON.parse(raw_access_token)["access_token"]
     end
 
     def raw_app_access_token
@@ -44,15 +45,18 @@ module Feishu
 
     def raw_access_token
       @raw_access_token ||= begin
-        post(
-          ACCESS_TOKEN_URL,
-          payload: {
-            app_access_token: app_access_token,
-            grant_type: "authorization_code",
-            code: code
-          }.to_json,
-          headers: { content_type: :json, accept: :json }
-        )
+        result =
+          post(
+            ACCESS_TOKEN_URL,
+            payload: {
+              app_access_token: app_access_token,
+              grant_type: "authorization_code",
+              code: code
+            }.to_json,
+            headers: { content_type: :json, accept: :json }
+          )
+
+        JSON.parse(result.body)["data"]
       end
     end
 
