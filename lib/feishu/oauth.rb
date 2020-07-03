@@ -30,7 +30,7 @@ module Feishu
           payload: {
             app_id: APP_ID,
             app_secret: APP_SECRET
-          },
+          }.to_json,
           headers: { content_type: :json, accept: :json }
         )
       end
@@ -44,7 +44,7 @@ module Feishu
             app_access_token: app_access_token,
             grant_type: "authorization_code",
             code: code
-          },
+          }.to_json,
           headers: { content_type: :json, accept: :json }
         )
       end
@@ -52,7 +52,7 @@ module Feishu
 
     def user_info
       @user_info ||= begin
-        post(
+        get(
           USER_INFO_URL,
           payload: {
             user_access_token: user_access_token
