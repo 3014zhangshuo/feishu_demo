@@ -19,7 +19,7 @@ module Feishu
     end
 
     def info
-      user_info.merge(openid: openid)
+      JSON.parse(user_info).merge(openid: openid)
     end
 
     def openid
