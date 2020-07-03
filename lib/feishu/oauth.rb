@@ -54,7 +54,7 @@ module Feishu
             }.to_json,
             headers: { content_type: :json, accept: :json }
           )
-
+        Rails.logger.debug "result----#{result}"
         JSON.parse(result)["data"]
       end
     end
