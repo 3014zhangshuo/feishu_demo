@@ -19,6 +19,7 @@ module Feishu
           app_secret: "6HxTE1njNUCG5OsxEpESwdJbTGWpHnJT",
         }
         result = RestClient.post "https://open.feishu.cn/open-apis/auth/v3/app_access_token/internal/", r_params.to_json, {content_type: :json, accept: :json}
+        Rails.logger.info "app_access_token--------#{result}"
         JSON.parse(result)["app_access_token"]
       end
     end
@@ -30,7 +31,9 @@ module Feishu
           grant_type: "authorization_code",
           code: code
         }
-        RestClient.post "https://open.feishu.cn/open-apis/authen/v1/access_token", r_params.to_json, {content_type: :json, accept: :json}
+        result = RestClient.post "https://open.feishu.cn/open-apis/authen/v1/access_token", r_params.to_json, {content_type: :json, accept: :json}
+        Rails.logger.info "get_access_token--------#{result}"
+        result
       end
     end
 
@@ -43,7 +46,9 @@ module Feishu
         r_params = {
           user_access_token: user_access_token
         }
-        RestClient.get "https://open.feishu.cn/open-apis/authen/v1/user_info", r_params.to_json, {content_type: :json, accept: :json}
+        result = RestClient.get "https://open.feishu.cn/open-apis/authen/v1/user_info", r_params.to_json, {content_type: :json, accept: :json}
+        Rails.logger.info "get_user_info--------#{result}"
+        result
       end
     end
   end
