@@ -19,11 +19,11 @@ module Feishu
     end
 
     def openid
-      @openid ||= JSON.parse(raw_access_token)["open_id"]
+      @openid ||= JSON.parse(raw_access_token)["data"]["open_id"]
     end
 
     def user_access_token
-      @user_access_token ||= JSON.parse(raw_access_token)["access_token"]
+      @user_access_token ||= JSON.parse(raw_access_token)["data"]["access_token"]
     end
 
     def app_access_token
