@@ -46,7 +46,7 @@ module Feishu
         r_params = {
           user_access_token: user_access_token
         }
-        result = RestClient.get "https://open.feishu.cn/open-apis/authen/v1/user_info", r_params.to_json, {content_type: :json, accept: :json}
+        result = RestClient.get "https://open.feishu.cn/open-apis/authen/v1/user_info", r_params, {accept: :json}
         Rails.logger.info "get_user_info--------#{result}"
         result
       end
