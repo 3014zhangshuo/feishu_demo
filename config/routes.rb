@@ -2,4 +2,5 @@
 
 Rails.application.routes.draw do
   get 'feishu/oauth_callback', to: 'feishu/oauth_callbacks#show'
+  post 'feishu/messages/receive', to: 'feishu/messages#receive'
 end

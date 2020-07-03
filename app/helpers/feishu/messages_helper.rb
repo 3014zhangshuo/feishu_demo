@@ -1,0 +1,2 @@
+module Feishu::MessagesHelper
+end

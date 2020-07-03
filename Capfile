@@ -4,8 +4,11 @@ require "capistrano/setup"
 # Include default deployment tasks
 require "capistrano/deploy"
 require "capistrano/rails"
-require "capistrano/passenger"
 require "capistrano/rbenv"
+require 'capistrano/puma'
+require 'capistrano/puma/nginx'
+install_plugin Capistrano::Puma
+install_plugin Capistrano::Puma::Nginx
 
 set :rbenv_type, :user
 set :rbenv_ruby, "2.7.1"
