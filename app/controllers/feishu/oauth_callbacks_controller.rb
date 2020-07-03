@@ -2,11 +2,17 @@
 
 module Feishu
   class OauthCallbacksController < ApplicationController
+    before_action :set_oauth
+
     def show
-      render json: get_user_info
+      render json: @oauth.user_info
     end
 
     private
+
+    def set_oauth
+      @oauth = ::Feishu::Oauth.new(params[:code])
+    end
 
     def code
       params[:code]
@@ -38,16 +44,16 @@ module Feishu
     end
 
     def user_access_token
-      JSON.parse(get_access_token)["data"]["access_token"]
+      @user_access_token ||= JSON.parse(get_access_token)["data"]["access_token"]
     end
 
     def get_user_info
       @get_user_info ||= begin
         r_params = {
-          user_access_token: user_access_token
+          user_access_token: "u-xAENtawkx1eaWDh6e9kqra"
         }
         Rails.logger.debug "user_access_token--------#{user_access_token}"
-        result = RestClient.get "https://open.feishu.cn/open-apis/authen/v1/user_info", { params: r_params }
+        result = RestClient.get "https://open.feishu.cn/open-apis/authen/v1/user_info?user_access_token=#{user_access_token}", { content_type: :json, Authorization: "Bearer #{user_access_token}" }
         Rails.logger.debug "get_user_info--------#{result}"
         result
       end
