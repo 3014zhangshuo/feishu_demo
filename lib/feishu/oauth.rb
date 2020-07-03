@@ -18,7 +18,7 @@ module Feishu
     end
 
     def openid
-      raw_access_token["open_id"]
+      @open_id ||= JSON.parse(raw_access_token)["open_id"]
     end
 
     def app_access_token
@@ -26,7 +26,7 @@ module Feishu
     end
 
     def user_access_token
-      @access_token ||= raw_access_token["access_token"]
+      @access_token ||= JSON.parse(raw_access_token)["access_token"]
     end
 
     def raw_app_access_token
@@ -52,7 +52,7 @@ module Feishu
             code: code
           }.to_json,
           headers: { content_type: :json, accept: :json }
-        ).fetch("data")
+        )
       end
     end
 
