@@ -13,7 +13,7 @@ module Feishu
     end
 
     def app_access_token
-      @get_access_token ||= begin
+      @app_access_token ||= begin
         r_params = {
           app_id: "cli_9e7688822c74500c",
           app_secret: "6HxTE1njNUCG5OsxEpESwdJbTGWpHnJT",
@@ -39,7 +39,7 @@ module Feishu
     end
 
     def get_user_info
-      @get_access_token ||= begin
+      @get_user_info ||= begin
         r_params = {
           user_access_token: user_access_token
         }
