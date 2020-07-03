@@ -2,7 +2,7 @@
 lock "~> 3.14.1"
 
 set :application, "feishu_demo"
-set :repo_url, "git@github.com:3014zhangshuo/feishu_demo.git"
+set :repo_url, "https://github.com/3014zhangshuo/feishu_demo.git"
 
 # Deploy to the user's home directory
 set :deploy_to, "/home/deploy/#{fetch :application}"
