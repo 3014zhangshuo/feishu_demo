@@ -1,0 +1,2 @@
+module Feishu::EventsHelper
+end

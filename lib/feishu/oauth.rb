@@ -4,10 +4,7 @@
 # https://open.feishu.cn/document/ukTMukTMukTM/uETOwYjLxkDM24SM5AjN
 # https://github.com/rest-client/rest-client/issues/397
 module Feishu
-  class Oauth
-    APP_ID = "cli_9e7688822c74500c"
-    APP_SECRET = "6HxTE1njNUCG5OsxEpESwdJbTGWpHnJT"
-
+  class Oauth < Base
     USER_INFO_URL = "https://open.feishu.cn/open-apis/authen/v1/user_info"
     ACCESS_TOKEN_URL = "https://open.feishu.cn/open-apis/authen/v1/access_token"
     APP_ACCESS_TOKEN_URL = "https://open.feishu.cn/open-apis/auth/v3/app_access_token/internal/"
@@ -40,8 +37,8 @@ module Feishu
           post(
             APP_ACCESS_TOKEN_URL,
             payload: {
-              app_id: APP_ID,
-              app_secret: APP_SECRET
+              app_id: app_id,
+              app_secret: app_secret
             }.to_json,
             headers: { content_type: :json, accept: :json }
           )
@@ -81,25 +78,6 @@ module Feishu
           }
         )
       end
-    end
-
-    private
-
-    def get(url, opts = {})
-      request(:get, url, opts)
-    end
-
-    def post(url, opts = {})
-      request(:post, url, opts)
-    end
-
-    def request(verb, url, opts = {})
-      RestClient::Request.execute(
-        method: verb,
-        url: url,
-        headers: opts[:headers],
-        payload: opts[:payload]
-      )
     end
   end
 end
