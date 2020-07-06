@@ -5,7 +5,7 @@ module Feishu
     extend ActiveSupport::Concern
 
     included do
-      before :return_challenge_as_json, if: -> { url_verification? }
+      before_action :return_challenge_as_json, if: -> { url_verification? }
     end
 
     private
