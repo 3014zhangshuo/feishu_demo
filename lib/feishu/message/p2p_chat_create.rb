@@ -16,7 +16,7 @@ module Feishu
                 content: '欢迎使用 Udesk 👏'
               }
             },
-            element: [
+            elements: [
               {
                 tag: 'div',
                 text: {
