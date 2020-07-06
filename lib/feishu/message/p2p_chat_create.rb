@@ -40,7 +40,7 @@ module Feishu
               }
             ]
           }
-        }
+        }.merge(chat_id: chat_id).to_json
       end
     end
   end
