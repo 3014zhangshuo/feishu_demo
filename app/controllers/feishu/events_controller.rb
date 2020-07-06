@@ -27,7 +27,7 @@ module Feishu
     end
 
     def chat_id
-      event['chat_id']
+      event['chat_id'] || event['open_chat_id']
     end
 
     def event_type
