@@ -15,9 +15,9 @@ module Feishu
     def message
       @message ||= begin
         if p2p_chat_create?
-          Feishu::Message::Card.new(chat_id)
+          ::Feishu::Message::Card.new(chat_id)
         else
-          Feishu::Message::P2pChatCreate.new(chat_id)
+          ::Feishu::Message::P2pChatCreate.new(chat_id)
         end
       end
     end
