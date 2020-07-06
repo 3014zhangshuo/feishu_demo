@@ -16,7 +16,7 @@ module Feishu
                 content: '卡片消息标题'
               }
             },
-            element: [
+            elements: [
               {
                 tag: 'div',
                 text: {
