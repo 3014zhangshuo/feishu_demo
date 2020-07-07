@@ -21,7 +21,7 @@ class User < ApplicationRecord
 
   def set_user_provider_with_session(session)
     Rails.logger.debug "set_user_provider_with_session--------#{session[:user_provider_info]}"
-    user_provider_info = session[:user_provider_info]
+    self.user_provider_info = session[:user_provider_info]
     set_user_provider
   end
 
