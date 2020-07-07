@@ -14,11 +14,13 @@ class User < ApplicationRecord
 
   def self.new_with_session(params, session)
     super.tap do |user|
+      Rails.logger.debug "new_with_session--------#{session[:user_provider_info]}"
       user.user_provider_info = session[:user_provider_info]
     end
   end
 
   def set_user_provider_with_session(session)
+    Rails.logger.debug "set_user_provider_with_session--------#{session[:user_provider_info]}"
     user_provider_info = session[:user_provider_info]
     set_user_provider
   end

@@ -16,7 +16,15 @@ module Feishu
     end
 
     def info
-      JSON.parse(user_info).merge(openid: openid)
+      {
+        channel: 'feishu',
+        openid: openid,
+        nick_name: raw_info['name'],
+        phone: raw_info['mobile'],
+        email: raw_info['email'],
+        user_id: raw_info['user_id'],
+        avatar_url: raw_info['avatar_url']
+      }
     end
 
     def openid
@@ -62,6 +70,10 @@ module Feishu
 
         JSON.parse(result)['data']
       end
+    end
+
+    def raw_info
+      @raw_info ||= JSON.parse(user_info)
     end
 
     def user_info
