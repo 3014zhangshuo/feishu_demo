@@ -5,7 +5,8 @@ module Feishu
     before_action :set_oauth
 
     def show
-      render json: @oauth.info
+      session[:user_provider_info] = @oauth.info
+      redirect_to root_path
     end
 
     private
