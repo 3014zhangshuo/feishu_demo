@@ -19,11 +19,11 @@ module Feishu
       {
         channel: 'feishu',
         openid: openid,
-        nick_name: raw_info['name'],
-        phone: raw_info['mobile'],
-        email: raw_info['email'],
-        user_id: raw_info['user_id'],
-        avatar_url: raw_info['avatar_url']
+        nick_name: raw_info['data']['name'],
+        phone: raw_info['data']['mobile'],
+        email: raw_info['data']['email'],
+        user_id: raw_info['data']['user_id'],
+        avatar_url: raw_info['data']['avatar_url']
       }
     end
 

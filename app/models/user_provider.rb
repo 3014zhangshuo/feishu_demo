@@ -3,18 +3,27 @@
 class UserProvider < ApplicationRecord
   belongs_to :user
 
-  enum channel: { qywx: 0, feishu: 1 }
-
   serialize :extra, Hash
 
-  def self.create_with_info(info)
-    create(
-      channel: info[:channel],
-      openid: info[:openid],
-      nick_name: info[:nick_name],
-      phone: info[:phone],
-      country: info[:country],
-      extra: info
-    )
+  class << self
+    def find_or_create_with_info(info)
+      find_with_info(info) || create_with_info(info)
+    end
+
+    private
+
+    def find_with_info(info)
+      where(openid: info['openid'], user_id: info['user_id']).first
+    end
+
+    def create_with_info(info)
+      create(
+        openid: info['openid'],
+        nick_name: info['nick_name'],
+        phone: info['phone'],
+        country: info['country'],
+        extra: info
+      )
+    end
   end
 end
