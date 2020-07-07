@@ -18,6 +18,7 @@ class UserProvider < ApplicationRecord
 
     def create_with_info(info)
       create(
+        user_id: info['user_id'],
         openid: info['openid'],
         nick_name: info['nick_name'],
         phone: info['phone'],

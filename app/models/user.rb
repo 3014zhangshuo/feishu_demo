@@ -30,6 +30,7 @@ class User < ApplicationRecord
   def set_user_provider
     return if user_provider_info.blank?
 
-    UserProvider.find_or_create_with_info(user_provider_info.merge(user_id: id))
+    user_provider_info['user_id'] = id
+    UserProvider.find_or_create_with_info(user_provider_info)
   end
 end
