@@ -29,7 +29,8 @@ class User < ApplicationRecord
 
   def set_user_provider
     return if provider_info.blank?
-
+    Rails.logger.debug "string key openid--------#{provider_info['openid']}"
+    Rails.logger.debug "symbol key openid--------#{provider_info[:openid]}"
     provider = providers.find_by_openid(provider_info['openid'])
     return if provider.present?
 
