@@ -2,7 +2,7 @@
 
 module Feishu
   module MessageTemplate
-    module_function
+    extend self
 
     def fetch(template_name)
       template_result_map[template_name].call
