@@ -4,10 +4,12 @@ module Feishu
   autoload :Base, 'feishu/base'
   autoload :Auth, 'feishu/auth'
   autoload :Oauth, 'feishu/oauth'
+  autoload :Message, 'feishu/message'
+  autoload :MessageTemplate, 'feishu/message_template'
 
-  module Message
-    autoload :Base, 'feishu/message/base'
-    autoload :Card, 'feishu/message/card'
-    autoload :P2pChatCreate, 'feishu/message/p2p_chat_create'
+  EVENT_TOKEN = 'Q7Fcikv1a8qb1FeyMvOoTdwlLYorryKQ'
+
+  def self.event_token
+    EVENT_TOKEN
   end
 end

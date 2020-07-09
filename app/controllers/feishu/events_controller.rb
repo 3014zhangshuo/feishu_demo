@@ -4,10 +4,12 @@ module Feishu
   class EventsController < ApplicationController
     include Feishu::UrlVerification
 
+    before_action :check_token!
+
     def create
       message.deliver
       Rails.logger.debug "--------#{message.message_id}"
-      head :ok
+      render status: :ok
     end
 
     private
@@ -15,9 +17,9 @@ module Feishu
     def message
       @message ||= begin
         if p2p_chat_create?
-          ::Feishu::Message::P2pChatCreate.new(chat_id)
+          ::Feishu::Message.new(chat_id: chat_id, template: :p2p_chat_create)
         else
-          ::Feishu::Message::Card.new(chat_id)
+          ::Feishu::Message.new(chat_id: chat_id, template: :bind_successfully)
         end
       end
     end
@@ -36,6 +38,12 @@ module Feishu
 
     def event
       params[:event]
+    end
+
+    def check_token!
+      return if params[:token] == ::Feishu.event_token
+
+      render status: :forbidden
     end
   end
 end
