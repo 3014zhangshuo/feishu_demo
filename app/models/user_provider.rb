@@ -11,13 +11,13 @@ class UserProvider < ApplicationRecord
     end
 
     def find_with_info(info)
-      where(openid: info[:openid], user_id: info[:user_id]).first
+      where(openid: info['openid'], user_id: info['user_id']).first
     end
 
     def create_with_info(info)
       create!(
-        openid: info[:openid],
-        nick_name: info[:nick_name],
+        openid: info['openid'],
+        nick_name: info['nick_name'],
         extra: info
       )
     end
