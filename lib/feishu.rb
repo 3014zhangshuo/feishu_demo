@@ -5,7 +5,7 @@ module Feishu
   APP_SECRET  = "6HxTE1njNUCG5OsxEpESwdJbTGWpHnJT"
   EVENT_TOKEN = 'Q7Fcikv1a8qb1FeyMvOoTdwlLYorryKQ'
 
-  autoload :Auth, 'feishu/auth'
+  autoload :Oauth2, 'feishu/oauth2'
   autoload :Base, 'feishu/base'
   autoload :HttpClient, 'feishu/http_client'
   autoload :Oauth, 'feishu/oauth'
