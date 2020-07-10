@@ -19,6 +19,10 @@ module Feishu
 
     private
 
+    def headers
+      { content_type: :json, accept: :json }
+    end
+
     def request(verb, path, opts = {})
       response = do_request(verb, path, opts)
       data = JSON.parse(response)
@@ -35,7 +39,7 @@ module Feishu
       RestClient::Request.execute(
         method: verb,
         url: "#{base}#{path}",
-        headers: opts[:headers],
+        headers: headers.merge(opts[:headers] || {}),
         payload: opts[:payload].to_json
       )
     end

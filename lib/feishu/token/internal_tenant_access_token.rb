@@ -2,10 +2,10 @@
 
 module Feishu
   module Token
-    class InternalAppAccessToken < AppAccessTokenBase
+    class InternalTenantAccessToken < TenantAccessTokenBase
       def refresh_token
         data = @client.get('tenant_access_token/internal/', payload: payload)
-        data['app_access_token']
+        data['tenant_access_token']
       end
     end
   end

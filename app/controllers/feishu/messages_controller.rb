@@ -6,7 +6,6 @@ module Feishu
 
     def receive
       Rails.logger.debug "action_info--------#{action_info}"
-
     end
 
     private

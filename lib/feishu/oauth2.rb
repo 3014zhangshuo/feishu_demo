@@ -3,7 +3,7 @@
 # https://open.feishu.cn/document/ukTMukTMukTM/uADN14CM0UjLwQTN
 # https://open.feishu.cn/document/ukTMukTMukTM/uETOwYjLxkDM24SM5AjN
 module Feishu
-  class Oauth2 < Base
+  class Oauth2
     attr_reader :code, :app_access_token, :access_token, :user_access_token,
                 :client
 
@@ -34,11 +34,7 @@ module Feishu
     end
 
     def headers
-      {
-        Authorization: "Bearer #{user_access_token}",
-        content_type: :json,
-        accept: :json
-      }
+      { Authorization: "Bearer #{user_access_token}" }
     end
 
     def payload

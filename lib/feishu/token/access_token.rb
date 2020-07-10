@@ -12,10 +12,6 @@ module Feishu
         @client = HttpClient.new('https://open.feishu.cn/open-apis/authen/v1/')
       end
 
-      def headers
-        { content_type: :json, accept: :json }
-      end
-
       def payload
         {
           app_access_token: app_access_token,
@@ -29,7 +25,7 @@ module Feishu
       end
 
       def openid
-        raw_info['openid']
+        raw_info['data']['openid']
       end
 
       private
@@ -40,8 +36,7 @@ module Feishu
       end
 
       def raw_info
-        @raw_info ||=
-          @client.post('access_token', headers: headers, payload: payload)
+        @raw_info ||= @client.post('access_token', payload: payload)
       end
 
       def refresh_token

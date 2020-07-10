@@ -8,7 +8,7 @@ module Feishu
       end
 
       def refresh_token
-        data = @client.post('app_access_token/', headers: headers, payload: payload)
+        data = @client.post('app_access_token/', payload: payload)
         data['app_access_token']
       end
 
