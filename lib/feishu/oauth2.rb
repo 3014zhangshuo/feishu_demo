@@ -4,7 +4,7 @@
 # https://open.feishu.cn/document/ukTMukTMukTM/uETOwYjLxkDM24SM5AjN
 module Feishu
   class Oauth2 < Base
-    attr_reader :code, :app_access_token, :access_token, :user_access_token
+    attr_reader :code, :app_access_token, :access_token, :user_access_token,
                 :client
 
     def initialize(code)
