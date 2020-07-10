@@ -45,7 +45,7 @@ module Feishu
       end
 
       def refresh_token
-        raw_info['access_token']
+        raw_info['data']['access_token']
       end
     end
   end
