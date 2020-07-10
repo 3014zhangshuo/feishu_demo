@@ -20,7 +20,7 @@ module Feishu
 
       def refresh_token
         data = @client.post('tenant_access_token/', payload: payload)
-        data['app_access_token']
+        data['tenant_access_token']
       end
 
       private
