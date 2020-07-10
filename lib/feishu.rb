@@ -16,7 +16,7 @@ module Feishu
     autoload :AppAccessTokenBase, 'feishu/token/app_access_token_base'
     autoload :ExternalAppAccessToken, 'feishu/token/external_app_access_token'
     autoload :InternalAppAccessToken, 'feishu/token/internal_app_access_token'
-    autoload :TenantAccessTokenBase, 'feishu/token/app_access_token_base'
+    autoload :TenantAccessTokenBase, 'feishu/token/tenant_access_token_base'
     autoload :ExternalTenantAccessToken, 'feishu/token/external_tenant_access_token'
     autoload :InternalTenantAccessToken, 'feishu/token/internal_tenant_access_token'
   end
