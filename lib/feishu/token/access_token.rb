@@ -25,7 +25,7 @@ module Feishu
       end
 
       def openid
-        raw_info['data']['openid']
+        raw_info['data']['open_id']
       end
 
       private

@@ -9,7 +9,7 @@ module Feishu
     end
 
     def to_payload
-      message_hash
+      @message_hash.merge(@to)
     end
   end
 end

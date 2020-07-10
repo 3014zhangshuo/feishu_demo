@@ -27,8 +27,8 @@ module Feishu
           },
           header: header('欢迎使用Udesk智能客服！'),
           elements: [
-            plain_text('Udesk智能客服，为您提供“沟通全渠道、管理全流程”的企业级SaaS服务。')
-            plain_text('您已经成功绑定账号，请点击“开始使用”进入Udesk智能客服。')
+            plain_text('Udesk智能客服，为您提供“沟通全渠道、管理全流程”的企业级SaaS服务。'),
+            plain_text('您已经成功绑定账号，请点击“开始使用”进入Udesk智能客服。'),
             {
               tag: 'action',
               actions: [

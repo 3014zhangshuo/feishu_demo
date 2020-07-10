@@ -17,13 +17,13 @@ module Feishu
     def message
       @message ||= begin
         if p2p_chat_create?
-          ::Feishu::MessageSender.deliver(
+          ::Feishu::MessageSender.new(
             ::Feishu::Message.new(to: { chat_id: chat_id }, template: :p2p_chat_create)
-          )
+          ).deliver
         else
-          ::Feishu::MessageSender.deliver(
+          ::Feishu::MessageSender.new(
             ::Feishu::Message.new(to: { chat_id: chat_id }, template: :bind_successfully)
-          )
+          ).deliver
         end
       end
     end

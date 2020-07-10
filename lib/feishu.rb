@@ -6,10 +6,9 @@ module Feishu
   EVENT_TOKEN = 'Q7Fcikv1a8qb1FeyMvOoTdwlLYorryKQ'
 
   autoload :Oauth2, 'feishu/oauth2'
-  autoload :Base, 'feishu/base'
-  autoload :HttpClient, 'feishu/http_client'
-  autoload :Oauth, 'feishu/oauth'
   autoload :Message, 'feishu/message'
+  autoload :HttpClient, 'feishu/http_client'
+  autoload :MessageSender, 'feishu/message_sender'
   autoload :MessageTemplate, 'feishu/message_template'
 
   module Token
@@ -17,6 +16,9 @@ module Feishu
     autoload :AppAccessTokenBase, 'feishu/token/app_access_token_base'
     autoload :ExternalAppAccessToken, 'feishu/token/external_app_access_token'
     autoload :InternalAppAccessToken, 'feishu/token/internal_app_access_token'
+    autoload :TenantAccessTokenBase, 'feishu/token/app_access_token_base'
+    autoload :ExternalTenantAccessToken, 'feishu/token/external_tenant_access_token'
+    autoload :InternalTenantAccessToken, 'feishu/token/internal_tenant_access_token'
   end
 
   # TODO: need a loader

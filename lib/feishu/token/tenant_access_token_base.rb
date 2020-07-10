@@ -3,12 +3,19 @@
 module Feishu
   module Token
     class TenantAccessTokenBase
-      attr_reader :client
+      attr_reader :app_id, :app_secret, :client
 
       def initialize(app_id, app_secret)
         @app_id = app_id
         @app_secret = app_secret
         @client = HttpClient.new('https://open.feishu.cn/open-apis/auth/v3/')
+      end
+
+      def payload
+        {
+          app_id: app_id,
+          app_secret: app_secret
+        }
       end
 
       def token
