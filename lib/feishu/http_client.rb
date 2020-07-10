@@ -32,7 +32,6 @@ module Feishu
 
     # TODO: replace rest-client
     def do_request(verb, path, opts = {})
-        binding.pry
       RestClient::Request.execute(
         method: verb,
         url: "#{base}#{path}",
