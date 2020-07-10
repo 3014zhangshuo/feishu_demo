@@ -9,7 +9,7 @@ module Feishu
 
     def initialize(code)
       @code = code
-      @app_access_token = Token::InternalAppAccessToken.new(app_id, app_secret)
+      @app_access_token = Token::InternalAppAccessToken.new(Feishu.app_id, Feishu.app_secret)
       @access_token = Token::AccessToken.new(app_access_token.token, code)
       @user_access_token = access_token.token
       @client = HttpClient.new('https://open.feishu.cn/open-apis/authen/v1/')
