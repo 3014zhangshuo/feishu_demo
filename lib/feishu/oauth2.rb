@@ -5,6 +5,7 @@
 module Feishu
   class Oauth2 < Base
     attr_reader :code, :app_access_token, :access_token, :user_access_token
+                :client
 
     def initialize(code)
       @code = code
