@@ -22,7 +22,7 @@ module Feishu
           ).deliver
         else
           ::Feishu::MessageSender.new(
-            ::Feishu::Message.new(to: { chat_id: chat_id }, template: :bind_successfully)
+            ::Feishu::Message.new(to: { chat_id: chat_id }, template: :bind_successfully, redirect_url: root_url)
           ).deliver
         end
       end

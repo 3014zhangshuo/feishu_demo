@@ -12,13 +12,13 @@ module Feishu
 
     def template_result_map
       {
-        bind_successfully: ->(options) { bind_successfully },
+        bind_successfully: ->(options) { bind_successfully(options[:redirect_url]) },
         p2p_chat_create: ->(options) { p2p_chat_create },
         ticket: ->(options) { ticket(options[:ticket]) }
       }
     end
 
-    def bind_successfully
+    def bind_successfully(redirect_url)
       {
         msg_type: 'interactive',
         card: {
@@ -32,7 +32,7 @@ module Feishu
             {
               tag: 'action',
               actions: [
-                button('开始使用', qrcode_url)
+                button('开始使用', redirect_url)
               ]
             }
           ]
