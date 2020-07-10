@@ -6,19 +6,18 @@ module Feishu
     BATCH_SEND_URL  = 'https://open.feishu.cn/open-apis/message/v4/batch_send/'
 
     attr_reader :auth
-    attr_reader :chat_id
-    attr_reader :openid
     attr_reader :template
 
     attr_accessor :result
     attr_accessor :message_id
 
     def initialize(**options)
-      raise(ArgumentError, 'Must pass chat_id or openid') if [options[:chat_id], options[:openid]].all?(&:blank?)
       @auth = Auth.new
-      @openid = options[:openid]
+      @open_id = options[:openid] || options[:open_id]
+      @open_ids = options[:openids] || options[:open_ids]
       @chat_id = options[:chat_id]
       @template = options[:template]
+      @ticket = options[:ticket]
     end
 
     def header
@@ -30,7 +29,7 @@ module Feishu
     end
 
     def payload
-      message_template.merge(chat_id: chat_id, open_id: openid).to_json
+      message_template.merge(payload_options).to_json
     end
 
     def deliver_successful?
@@ -40,15 +39,33 @@ module Feishu
     end
 
     def deliver
-      result = post(COMMON_SEND_URL, payload: payload, headers: header)
-      @result = JSON.parse(result)
-      @message_id = @result['data']['message_id'] if deliver_successful?
+      deliver_hander(COMMON_SEND_URL)
+    end
+
+    def batch_deliver
+      deliver_hander(BATCH_SEND_URL)
     end
 
     private
 
+    def payload_options
+      return { open_ids: @open_ids } if batch_mode?
+
+      { chat_id: @chat_id, open_id: @open_id }
+    end
+
+    def batch_mode?
+      @openids.present?
+    end
+
+    def deliver_hander(url)
+      result = post(url, payload: payload, headers: header)
+      @result = JSON.parse(result)
+      @message_id = @result['data']['message_id'] if deliver_successful?
+    end
+
     def message_template
-      MessageTemplate.fetch(template)
+      MessageTemplate.fetch(template).call(ticket: @ticket)
     end
   end
 end

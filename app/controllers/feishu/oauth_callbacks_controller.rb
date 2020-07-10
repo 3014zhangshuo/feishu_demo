@@ -26,7 +26,7 @@ module Feishu
     end
 
     def set_oauth
-      @oauth = ::Feishu::Oauth.new(params[:code])
+      @oauth = ::Feishu::Oauth2.new(params[:code])
     end
   end
 end
