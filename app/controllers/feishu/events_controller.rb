@@ -17,13 +17,6 @@ module Feishu
       @user ||= UserProvider.feishu..find_by_openid(openid)&.user
     end
 
-    ::Feishu::MessageSender.new(
-      ::Feishu::Message.new(
-        to: { open_id: 'ou_dbda6b5c3078b57dc8707200eb1e67c7' },
-        template: :fake_ticket
-      )
-    ).deliver
-
     def event_handler
       case event_type
       when 'p2p_chat_create'
