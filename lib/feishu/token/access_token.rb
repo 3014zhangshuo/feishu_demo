@@ -9,7 +9,7 @@ module Feishu
         @app_access_token = app_access_token
         @code = code
         @grant_type = grant_type
-        @client = HttpClient.new('https://open.feishu.cn/open-apis/authen/v1/')
+        @client = HttpClient.new(AUTHEN_V1_BASE)
       end
 
       def payload

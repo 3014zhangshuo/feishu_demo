@@ -22,7 +22,7 @@ module Feishu
     end
 
     def user
-      UserProvider.find_by_openid(@oauth.info['openid'])&.user
+      UserProvider.feishu.find_by_openid(@oauth.info['openid'])&.user
     end
 
     def set_oauth

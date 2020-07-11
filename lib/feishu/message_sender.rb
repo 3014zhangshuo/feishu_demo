@@ -7,7 +7,7 @@ module Feishu
     def initialize(message)
       @message = message
       @tenant_access_token = Token::InternalTenantAccessToken.new(Feishu.app_id, Feishu.app_secret)
-      @client = HttpClient.new('https://open.feishu.cn/open-apis/message/v4/')
+      @client = HttpClient.new(MESSAGE_BASE)
     end
 
     def batch_deliver

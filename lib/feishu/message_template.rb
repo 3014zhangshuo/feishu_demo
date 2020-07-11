@@ -14,7 +14,8 @@ module Feishu
       {
         bind_successfully: ->(options) { bind_successfully(options[:redirect_url]) },
         p2p_chat_create: ->(options) { p2p_chat_create },
-        ticket: ->(options) { ticket(options[:ticket]) }
+        ticket: ->(options) { ticket(options[:ticket]) },
+        fake_ticket: ->(options) { fake_ticket }
       }
     end
 
@@ -72,12 +73,37 @@ module Feishu
           header: header('工单：ticket.feishu_card_message_title'),
           elements: [
             lark_md("**描述：**\n#{ticket.content}\n#{ticket.feishu_attachments_content}"),
-            lark_md("**回复：**\n#{ticket.content}\n#{ticket_feishu_replies_content(ticket)}"),
-            *ticket_feishu_replies_content(ticket),
+            lark_md("**回复：**\n#{ticket_feishu_replies_content(ticket)}"),
             {
               tag: 'action',
               actions: [
+                select_static('分配给...', ticket.id, { zs: :assignee_id_1, zz: :assignee_id_2 }),
+                select_static('操作...', ticket.id, { 开启: :status_id_1, 关闭: :status_id_2 }),
+                button('查看详细', 'http://udesk.cn')
+              ]
+            }
+          ]
+        }
+      }
+    end
 
+    def fake_ticket
+      {
+        msg_type: 'interactive',
+        card: {
+          config: {
+            wide_screen_mode: true
+          },
+          header: header('工单：ticket.feishu_card_message_title'),
+          elements: [
+            lark_md("**描述：**\nUdesk是什么？"),
+            lark_md("**回复：**\nUdesk是什么？\nUdesk是什么？"),
+            {
+              tag: 'action',
+              actions: [
+                select_static('分配给...', 1, { zs: :assignee_id_1, zz: :assignee_id_2 }),
+                select_static('操作...', 1, { 开启: :status_id_1, 关闭: :status_id_2 }),
+                button('查看详细', 'http://udesk.cn')
               ]
             }
           ]
@@ -150,16 +176,16 @@ module Feishu
       }
     end
 
-    def select_static(placeholder_content, values)
+    def select_static(placeholder_content, value, values)
       {
         tag: 'select_static',
         placeholder: {
-          tag: plain_text,
+          tag: 'plain_text',
           content: placeholder_content
         },
         options: values.map { |c, v| select_static_option(c, v) },
         value: {
-          key: 'value'
+          ticket_id: value
         }
       }
     end

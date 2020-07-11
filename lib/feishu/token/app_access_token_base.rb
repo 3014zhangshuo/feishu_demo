@@ -8,7 +8,7 @@ module Feishu
       def initialize(app_id, app_secret)
         @app_id = app_id
         @app_secret = app_secret
-        @client = HttpClient.new('https://open.feishu.cn/open-apis/auth/v3/')
+        @client = HttpClient.new(AUTH_V3_BASE)
       end
 
       def payload

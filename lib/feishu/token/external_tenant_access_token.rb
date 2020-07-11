@@ -14,7 +14,7 @@ module Feishu
       def payload
         {
           app_access_token: app_access_token.token,
-          tenant_key: '' # TODO: add tenant_key
+          tenant_key: UserProviderApp.feishu.find_by(app_id: app_id).tenant_key
         }
       end
 

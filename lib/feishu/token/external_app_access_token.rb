@@ -15,7 +15,7 @@ module Feishu
       private
 
       def app_ticket
-        # TODO: implement get and store app_ticket
+        UserProviderApp.feishu.find_by(app_id: app_id).app_ticket
       end
     end
   end
