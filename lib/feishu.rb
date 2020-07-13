@@ -1,14 +1,16 @@
 # frozen_string_literal: true
 
 module Feishu
-  APP_ID      = 'cli_9e7688822c74500c'
-  APP_SECRET  = '6HxTE1njNUCG5OsxEpESwdJbTGWpHnJT'
-  EVENT_TOKEN = 'Q7Fcikv1a8qb1FeyMvOoTdwlLYorryKQ'
+  APP_ID      = 'cli_9f86917eeb6c500d'
+  APP_SECRET  = '0x3VWluv1JRm4yFY3VqXUdnBRLomU36W'
+  EVENT_TOKEN = 'DR2zUfgHzwn1KraXbz6Escnxa3jmXzPm'
   AUTH_V3_BASE = 'https://open.feishu.cn/open-apis/auth/v3/'
   MESSAGE_BASE = 'https://open.feishu.cn/open-apis/message/v4/'
   AUTHEN_V1_BASE = 'https://open.feishu.cn/open-apis/authen/v1/'
   IMAGE_BASE = 'https://open.feishu.cn/open-apis/image/v4/'
 
+  autoload :Api, 'feishu/api'
+  autoload :Image, 'feishu/image'
   autoload :Oauth2, 'feishu/oauth2'
   autoload :Message, 'feishu/message'
   autoload :HttpClient, 'feishu/http_client'
