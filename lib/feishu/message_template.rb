@@ -70,18 +70,21 @@ module Feishu
           config: {
             wide_screen_mode: true
           },
-          header: header('工单：ticket.feishu_card_message_title'),
+          header: header("工单：#{ticket.feishu_card_message_title}"),
           elements: [
             lark_md("**描述：**\n#{ticket.content}\n#{ticket.feishu_attachments_content}"),
-            lark_md("**回复：**\n#{ticket_feishu_replies_content(ticket)}"),
+            lark_md("**回复：**\n#{ticket_feishu_replies_content(ticket).join('\n')}"),
             {
               tag: 'action',
+              layout: 'bisected',
               actions: [
                 select_static('分配给...', ticket.id, { zs: :assignee_id_1, zz: :assignee_id_2 }),
                 select_static('操作...', ticket.id, { 开启: :status_id_1, 关闭: :status_id_2 }),
                 button('查看详细', 'http://udesk.cn')
               ]
-            }
+            },
+            hr,
+            note('来自应用 Udesk智能客服助手')
           ]
         }
       }
@@ -100,6 +103,7 @@ module Feishu
             lark_md("**回复：**\nUdesk是什么？\nUdesk是什么？"),
             {
               tag: 'action',
+              layout: 'bisected',
               actions: [
                 select_static('分配给...', 1, { zs: :assignee_id_1, zz: :assignee_id_2 }),
                 select_static('操作...', 1, { 开启: :status_id_1, 关闭: :status_id_2 }),
@@ -124,17 +128,40 @@ module Feishu
               tag: 'plain_text',
               content: reply.user.try(:nick_name)
             },
-            {
-              tag: 'img',
-              img_key: 'f32**************************cf7',
-              alt: {
-                tag: 'plain_text',
-                content: 'Note image size：16*16'
-              }
-            }
+            #img('img_key', 'content')
           ]
         }
       end
+    end
+
+    def note(content)
+      {
+        tag: 'note',
+        elements: [
+          # img('img_key', 'content'),
+          {
+            tag: 'plain_text',
+            content: content
+          }
+        ].compact
+      }
+    end
+
+    def img(img_key, content)
+      {
+        tag: 'img',
+        img_key: img_key,
+        alt: {
+          tag: 'plain_text',
+          content: content
+        }
+      }
+    end
+
+    def hr
+      {
+        tag: 'hr'
+      }
     end
 
     def header(content)

@@ -7,6 +7,7 @@ module Feishu
   AUTH_V3_BASE = 'https://open.feishu.cn/open-apis/auth/v3/'
   MESSAGE_BASE = 'https://open.feishu.cn/open-apis/message/v4/'
   AUTHEN_V1_BASE = 'https://open.feishu.cn/open-apis/authen/v1/'
+  IMAGE_BASE = 'https://open.feishu.cn/open-apis/image/v4/'
 
   autoload :Oauth2, 'feishu/oauth2'
   autoload :Message, 'feishu/message'

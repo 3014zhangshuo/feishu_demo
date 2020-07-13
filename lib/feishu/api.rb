@@ -9,7 +9,8 @@ module Feishu
           app_secret: Feishu.app_secret
         }
 
-        HttpClient.new(AUTH_V3_BASE).post('app_ticket/resend/', payload: payload)
+        HttpClient.new(AUTH_V3_BASE)
+                  .post('app_ticket/resend/', payload: payload)
       end
     end
   end

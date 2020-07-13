@@ -4,14 +4,12 @@
 # https://open.feishu.cn/document/ukTMukTMukTM/uETOwYjLxkDM24SM5AjN
 module Feishu
   class Oauth2
-    attr_reader :code, :app_access_token, :access_token, :user_access_token,
-                :client
+    attr_reader :code, :app_access_token, :access_token, :client
 
     def initialize(code)
       @code = code
       @app_access_token = Token::InternalAppAccessToken.new(Feishu.app_id, Feishu.app_secret)
       @access_token = Token::AccessToken.new(app_access_token.token, code)
-      @user_access_token = access_token.token
       @client = HttpClient.new(AUTHEN_V1_BASE)
     end
 
@@ -39,6 +37,10 @@ module Feishu
 
     def payload
       { user_access_token: user_access_token }
+    end
+
+    def user_access_token
+      @user_access_token ||= access_token.token
     end
   end
 end
