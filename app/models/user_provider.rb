@@ -6,6 +6,8 @@ class UserProvider < ApplicationRecord
   serialize :extra, Hash
 
   class << self
+    alias feishu all
+
     def find_or_create_with_info(info)
       find_with_info(info) || create_with_info(info)
     end
