@@ -15,4 +15,4 @@ production:
   <<: *default
   database: feishu_demo_production
   username: postgres
-  password:
+  password: postgres
