@@ -2,6 +2,7 @@
 
 class UserProvider < ApplicationRecord
   belongs_to :user
+  belongs_to :app, class_name: :UserProviderApp
 
   serialize :extra, Hash
 
@@ -18,6 +19,7 @@ class UserProvider < ApplicationRecord
 
     def create_with_info(info)
       create!(
+        app: UserProviderApp.feishu.first,
         openid: info['openid'],
         nick_name: info['nick_name'],
         extra: info

@@ -14,10 +14,10 @@ module Feishu
     private
 
     def user
-      @user ||= UserProvider.feishu..find_by_openid(openid)&.user
+      @user ||= UserProvider.feishu.find_by_openid(openid)&.user
     end
 
-    def event_handler
+    def handle_event
       case event_type
       when 'p2p_chat_create'
         ::Feishu::MessageSender.new(

@@ -1,6 +1,7 @@
 class CreateUserProviders < ActiveRecord::Migration[5.2]
   def change
     create_table :user_providers do |t|
+      t.integer :user_provider_app_id
       t.integer :user_id
       t.string :openid
       t.string :nick_name

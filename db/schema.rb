@@ -10,11 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_07_033341) do
+ActiveRecord::Schema.define(version: 2020_07_14_014853) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "user_provider_apps", force: :cascade do |t|
+    t.integer "channel"
+    t.string "name"
+    t.string "app_id"
+    t.string "app_secret"
+    t.text "extra"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "user_providers", force: :cascade do |t|
+    t.integer "user_provider_app_id"
     t.integer "user_id"
-    t.integer "channel"
     t.string "openid"
     t.string "nick_name"
     t.string "phone"
