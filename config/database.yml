@@ -14,3 +14,5 @@ test:
 production:
   <<: *default
   database: feishu_demo_production
+  username: deploy
+  password:
