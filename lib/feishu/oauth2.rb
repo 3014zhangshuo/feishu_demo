@@ -14,6 +14,7 @@ module Feishu
     end
 
     def info
+      Rails.logger.debug "user_info-------------------#{user_info}"
       {
         channel: 'feishu',
         openid: access_token.openid,
