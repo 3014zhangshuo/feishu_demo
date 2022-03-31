@@ -5,7 +5,7 @@ ruby '2.7.1'
 
 gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
 gem 'pg'
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 5.6'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
@@ -18,7 +18,7 @@ gem 'capistrano', '~> 3.11'
 gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-passenger', '~> 0.2.0'
 gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
-gem 'capistrano3-puma', '3.1.1'
+gem 'capistrano3-puma', '5.2.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
