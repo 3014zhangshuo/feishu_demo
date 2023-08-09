@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "05e48423-b36c-4a6a-ab92-d4b166154119",
+		"name": "Forgot Password",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16894325"
+	},
+	"item": [
+		{
+			"name": "Send Reset Password Email",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-sign",
+						"value": "a2ad841c79558acb3b185dec19fc03e50a4ebd19f8f65f0d733e7b06a7a1d0c8&1657777468000",
+						"type": "text"
+					},
+					{
+						"key": "TC",
+						"value": "dHdpdHRlcgp6bHNwMzAxNAp6bHNwLXR3aXR0ZXJAb3V0bG9vay5jb20KYXNkMzAxNDMwMTQK",
+						"type": "text"
+					},
+					{
+						"key": "IC",
+						"value": "aW5zCnpsc3B6bHNwCnpsc3BAbWFpbC5jb20KYXNkMzAxNDMwMTQK",
+						"type": "text"
+					},
+					{
+						"key": "OC",
+						"value": "b3V0bG9vawp6bHNwLXR3aXR0ZXJAb3V0bG9vay5jb20KYXNkMzAxNDMwMTQK",
+						"type": "text"
+					},
+					{
+						"key": "MC",
+						"value": "bWFpbAp6bHNwLXR3aXR0ZXJAY2hlZi5uZXQKYXNkMzAxNDMwMTQKemxzcEBtYWlsLmNvbQphc2QzMDE0MzAxNAo=",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"szhang@holidale.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://livetesting.month2month.com/m2m/v1/users/passwords",
+					"protocol": "https",
+					"host": [
+						"livetesting",
+						"month2month",
+						"com"
+					],
+					"path": [
+						"m2m",
+						"v1",
+						"users",
+						"passwords"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-sign",
+						"value": "218faae3bc84b6617a7a4970d2ee33da1e08c39cb2048ca301bfb23feab6ee57&1657777113000",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"reset_password_token\": \"N5eKMP7ACLbK-9vSo8T2\",\n    \"password\": \"123456123456\",\n    \"password_confirmation\": \"123456123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://livetesting.month2month.com/m2m/v1/users/passwords",
+					"protocol": "https",
+					"host": [
+						"livetesting",
+						"month2month",
+						"com"
+					],
+					"path": [
+						"m2m",
+						"v1",
+						"users",
+						"passwords"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://share.acgnx.se/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://share.acgnx.se/",
+					"protocol": "https",
+					"host": [
+						"share",
+						"acgnx",
+						"se"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://javmenu.com/zh/rank/western/actress?page=3",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://javmenu.com/zh/rank/western/actress?page=3",
+					"protocol": "https",
+					"host": [
+						"javmenu",
+						"com"
+					],
+					"path": [
+						"zh",
+						"rank",
+						"western",
+						"actress"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://g-avstar.com/2021/03/02/oumeihotpornstartop10/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://g-avstar.com/2021/03/02/oumeihotpornstartop10/",
+					"protocol": "https",
+					"host": [
+						"g-avstar",
+						"com"
+					],
+					"path": [
+						"2021",
+						"03",
+						"02",
+						"oumeihotpornstartop10",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://hanime1.me/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://hanime1.me/",
+					"protocol": "https",
+					"host": [
+						"hanime1",
+						"me"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://www.hentaiclub.net/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://www.hentaiclub.net/",
+					"protocol": "https",
+					"host": [
+						"www",
+						"hentaiclub",
+						"net"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://biglist.xyz/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://biglist.xyz/",
+					"protocol": "https",
+					"host": [
+						"biglist",
+						"xyz"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://xsmpic.com/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://xsmpic.com/",
+					"protocol": "https",
+					"host": [
+						"xsmpic",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://wnacg.com/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://wnacg.com/",
+					"protocol": "https",
+					"host": [
+						"wnacg",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://18h.animezilla.com/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://18h.animezilla.com/",
+					"protocol": "https",
+					"host": [
+						"18h",
+						"animezilla",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
